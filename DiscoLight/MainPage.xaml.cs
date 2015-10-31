@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -80,8 +81,18 @@ namespace DiscoLight
                         adapters.Where(
                             adapter =>
                                 adapter.IPInformation != null &&
-                                (adapter.IPInformation.NetworkAdapter.IanaInterfaceType == 71 &&
-                                 (adapter.Type == HostNameType.Ipv4 || adapter.Type == HostNameType.Ipv6))))
+                                (
+                                    (
+                                        adapter.IPInformation.NetworkAdapter.IanaInterfaceType == 71 || // An IEEE 802.11 wireless network interface
+                                        adapter.IPInformation.NetworkAdapter.IanaInterfaceType == 6     // An Ethernet network interface
+                                    ) &&
+                                    (
+                                        adapter.Type == HostNameType.Ipv4 || 
+                                        adapter.Type == HostNameType.Ipv6
+                                    )
+                                )
+                            )
+                )
                 {
                     // If found assign it's IP to a variable
                     found = true;
