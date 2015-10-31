@@ -7,4 +7,4 @@ The goal of this project is to put the image unit of a old used display infront 
 If you run this app on your Raspberry Pi 2, it will start up a web server listening on port `8081`. The default color is `White` and the current IP address, the server is listening to, is shown in the bottom right corner of the attached screen.
 
 To change the screens color, simply call:
-`http://YOUR_ID_ADRESS:8081/?color=0095DD`
+`http://YOUR_IP_ADRESS:8081/?color=0095DD`
