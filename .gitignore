@@ -1,0 +1,5 @@
+*.DotSettings
+*.user
+*.lock.json
+DiscoLight/bin
+DiscoLight/obj
